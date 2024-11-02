@@ -1,0 +1,306 @@
+\documentclass[a4paper,10pt,twocolumn,oneside]{article}
+\setlength{\columnsep}{10pt}                                                              %兩欄模式的間距
+\setlength{\columnseprule}{0pt}                                                                %兩欄模式間格線粗細
+
+\usepackage{amsthm}								%定義，例題
+\usepackage{amssymb}
+%\usepackage[margin=2cm]{geometry}
+\usepackage{fontspec}								%設定字體
+\usepackage{color}
+\usepackage[x11names]{xcolor}
+\usepackage{listings}								%顯示code用的
+%\usepackage[Glenn]{fncychap}						%排版，頁面模板
+\usepackage{fancyhdr}								%設定頁首頁尾
+\usepackage{graphicx}								%Graphic
+\usepackage{enumerate}
+\usepackage{titlesec}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{xpatch}
+\usepackage[CheckSingle, CJKmath]{xeCJK}
+% \usepackage{CJKulem}
+%\usepackage[T1]{fontenc}
+\titlespacing{\section}{0cm}{0cm}{0cm}
+\titlespacing{\subsection}{0cm}{0cm}{0cm}
+\usepackage{amsmath, courier, listings, fancyhdr, graphicx}
+\topmargin=0pt
+\headsep=5pt
+\textheight=780pt
+\footskip=4pt
+\voffset=-40pt
+\textwidth=545pt
+\marginparsep=0pt
+\marginparwidth=0pt
+\marginparpush=0pt
+\oddsidemargin=0pt
+\evensidemargin=0pt
+\hoffset=-42pt
+
+%\renewcommand\listfigurename{圖目錄}
+%\renewcommand\listtablename{表目錄} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setmainfont [				%主要字型
+    Path = .fonts/ttf/,
+    UprightFont = *-Regular,
+    BoldFont = *-Bold,
+    ItalicFont = *-Italic
+  ] {Consolas}
+
+\setmonofont [        
+    Path = .fonts/ttf/,
+    UprightFont = *-Regular
+  ] {Monaco}
+
+\setCJKmainfont[
+    Path = .fonts/ttf/,
+    UprightFont = *-Regular
+] {NotoSansTC}
+
+\XeTeXlinebreaklocale "zh"						%中文自動換行
+\XeTeXlinebreakskip = 0pt plus 1pt				%設定段落之間的距離
+\setcounter{secnumdepth}{3}						%目錄顯示第三層
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\makeatletter
+\lst@CCPutMacro\lst@ProcessOther {"2D}{\lst@ttfamily{-{}}{-{}}}
+\@empty\z@\@empty
+\makeatother
+\lstset{											% Code顯示
+language=C++,										% the language of the code
+basicstyle=\footnotesize\ttfamily, 						% the size of the fonts that are used for the code
+%numbers=left,										% where to put the line-numbers
+numberstyle=\footnotesize,						% the size of the fonts that are used for the line-numbers
+stepnumber=1,										% the step between two line-numbers. If it's 1, each line  will be numbered
+numbersep=5pt,										% how far the line-numbers are from the code
+backgroundcolor=\color{white},					% choose the background color. You must add \usepackage{color}
+showspaces=false,									% show spaces adding particular underscores
+showstringspaces=false,							% underline spaces within strings
+showtabs=false,									% show tabs within strings adding particular underscores
+frame=false,											% adds a frame around the code
+tabsize=2,											% sets default tabsize to 2 spaces
+captionpos=b,										% sets the caption-position to bottom
+breaklines=true,									% sets automatic line breaking
+breakatwhitespace=false,							% sets if automatic breaks should only happen at whitespace
+escapeinside={\%*}{*)},							% if you want to add a comment within your code
+morekeywords={*},									% if you want to add more keywords to the set
+keywordstyle=\bfseries\color{Blue1},
+commentstyle=\itshape\color{Red4},
+stringstyle=\itshape\color{Green4},
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\pagestyle{fancy}
+\fancyfoot{}
+%\fancyfoot[R]{\includegraphics[width=20pt]{ironwood.jpg}}
+\fancyhead[L]{National Ocean University Rigby}
+\fancyhead[C]{2024 Ocean Cup}
+\fancyhead[R]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\contentsname}{Contents} 
+
+\scriptsize
+\tableofcontents
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{計算幾何}
+
+\subsection{基本儲存}
+\lstinputlisting{Computational Geometry/basic_store.cpp}
+
+\subsection{距離}
+歐基里德距離
+\[ d(p_1, p_2) = \sqrt{(x_1 - x_2)^2 + (y_1 - y_2)^2} \]
+曼哈頓距離
+\[ d(p_1, p_2) = \vert{x_1 - x_2}\vert + \vert{y_1 - y_2}\vert \]
+\subsection{內積、外積}
+\[ \vec{v_1} \cdot \vec{v_2} = {x_1}{x_2} + {y_1}{y_2} \]
+\[ \vec{v_1} \times \vec{v_2} = {x_1}{y_2} - {x_2}{y_1} \]
+\subsection{多邊形面積}
+\[ \frac{1}{2}\vert\sum\limits_{i=1}^n \overrightarrow{OP_i} \times \overrightarrow{OP_{i+1}}\vert \]
+\subsection{點與線段距離}
+看點與線段兩端內積，若為負數則說明角度大於90度
+則距離為點到該端點的距離
+若內積皆>=0，則距離為三角形面積/線段
+\subsection{判斷點是否在線段上}
+\lstinputlisting{Computational Geometry/three_points_on_line.cpp}
+
+\subsection{線段相交、交點}
+\lstinputlisting{Computational Geometry/line_intersect.cpp}
+
+\subsection{點在多邊形內部}
+射線法:若點在多邊形內，則隨機選一個方向的射線出現會碰到奇數次邊
+而如果碰到多邊形的點，如果射線碰到多邊形的點則重選
+(需要特判點是否在多邊形的邊或頂點上)
+
+\subsection{凸包}
+\lstinputlisting{Computational Geometry/convex_hull.cpp}
+\subsection{凸包技巧}
+\lstinputlisting{Computational Geometry/convex_hull_trick.cpp}
+
+\subsection{旋轉卡尺-最遠點對}
+\lstinputlisting{Computational Geometry/farthest_pair.cpp}
+
+\subsection{圓覆蓋面積}
+\lstinputlisting{Computational Geometry/covered_circle.cpp}
+\subsection{多邊形聯集面積}
+\lstinputlisting{Computational Geometry/PolygonUnion.cpp}
+\subsection{多邊形覆蓋面積}
+\lstinputlisting{Computational Geometry/PolygonCover.cpp}
+
+\subsection{極角排序}
+\lstinputlisting{Computational Geometry/angle_sort.cpp}
+
+\subsection{皮克定理(多邊形內整數點數量)}
+\[ A = i + \frac{b}{2} - 1 \]
+A:多邊形面積
+i:內部整數點個數
+b:線上整數點個數
+
+\subsection{三分搜-最小包覆圓}
+平面上給 n 個點，求出半徑最小的圓要包住所有的點。
+求出圓心位置與與最小半徑。複雜度($N{\log}^2{N}$)
+\lstinputlisting{Computational Geometry/three_search.cpp}
+
+\subsection{旋轉矩陣、鏡射矩陣}
+逆時針轉$\theta$角
+\[\begin{bmatrix}
+  cos\theta&-sin\theta  \\
+  sin\theta &cos\theta 
+\end{bmatrix}\]
+對與x軸正向夾角為$\theta$的直線L鏡射
+\[\begin{bmatrix}
+  cos2\theta & sin2\theta  \\
+  sin2\theta & -cos2\theta 
+\end{bmatrix}\]
+
+\section{資料結構}
+\subsection{離散化}
+\lstinputlisting{data_structure/discretization.cpp}
+\subsection{線段樹}
+\lstinputlisting{data_structure/segment_tree.cpp}
+
+\section{動態規劃}
+\subsection{0/1背包}
+$O(NW)$
+\lstinputlisting{dp/01knapsack.cpp}
+\subsection{無限背包}
+$O(NW)$
+\lstinputlisting{dp/infinite_knapsack.cpp}
+\subsection{有限背包}
+$O(NW\log{k})$
+\lstinputlisting{dp/finite_knapsack.cpp}
+
+
+\section{數學}
+\subsection{階乘與模逆元}
+\lstinputlisting{math/factorial.cpp}
+\subsection{擴展歐基里德}
+\lstinputlisting{math/exgcd.cpp}
+\subsection{中國剩餘定理}
+\lstinputlisting{math/CRT.cpp}
+\subsection{進制轉換}
+\lstinputlisting{math/representation_change.cpp}
+\subsection{O(1)mul}
+\lstinputlisting{math/O(1)mul.cpp}
+\subsection{Miller Rabin}
+\lstinputlisting{math/Miller_Rabin.cpp}
+\subsection{Pollard Rho}
+\lstinputlisting{math/Pollard_Rho.cpp}
+\subsection{FFT}
+\lstinputlisting{math/FFT.cpp}
+\subsection{約瑟夫問題}
+\lstinputlisting{math/Josephus.cpp}
+\subsection{快速求歐拉函數}
+\lstinputlisting{math/quick_eular.cpp}
+\subsection{矩陣}
+\lstinputlisting{math/Matrix.cpp}
+
+
+\section{樹論}
+\subsection{LCA}
+\lstinputlisting{tree/lca.cpp}
+\subsection{換根DP}
+\lstinputlisting{tree/change_root.cpp}
+
+
+\section{圖論}
+\subsection{最短路徑}
+dijkstra $O({V}^2 + E)$
+\lstinputlisting{graph/short_path/dijkstra.cpp}
+floyd-warshall $O({N}^3)$
+\lstinputlisting{graph/short_path/floyd_warshall.cpp}
+\subsection{歐拉回路、漢米爾頓路徑}
+\lstinputlisting{graph/Eular_cycle.cpp}
+\lstinputlisting{graph/Hamiltonian_path.cpp}
+\subsection{點雙連通分量}
+\lstinputlisting{graph/BCC.cpp}
+\subsection{強連通分量}
+\lstinputlisting{graph/SCC.cpp}
+
+
+\section{字串}
+\subsection{KMP}
+\lstinputlisting{string/KMP.cpp}
+\subsection{Hash}
+\lstinputlisting{string/Double_Hash.cpp}
+\subsection{minRotation}
+\lstinputlisting{string/minRotation.cpp}
+\subsection{Suffix Array}
+\lstinputlisting{string/SA.cpp}
+\subsection{馬拉車}
+\lstinputlisting{string/Manacher.cpp}
+\subsection{Zvalue}
+\lstinputlisting{string/Zvalue.cpp}
+\subsection{字典樹}
+\lstinputlisting{string/Trie.cpp}
+\subsection{回文樹}
+\lstinputlisting{string/palTree.cpp}
+
+
+\section{網路流}
+\subsection{Dinic}
+\lstinputlisting{flow/dinic.cpp}
+\subsection{最小花費最大流}
+\lstinputlisting{flow/Min-cost_Max-flow.cpp}
+\subsection{最小割}
+\lstinputlisting{flow/MinCut.cpp}
+\subsection{匈牙利演算法}
+\lstinputlisting{flow/Hungarian_Algo.cpp}
+\subsection{二分圖最大權完美}
+\lstinputlisting{flow/KM.cpp}
+
+
+% \section{一些題目}
+% \subsection{最大子矩形-玉蟾宮}
+% \lstinputlisting{problem/max_submatrix.cpp}
+% \subsection{次小生成樹}
+% 先求出 MST 之後，窮舉每條不在 MST 上的邊放上去，而會形成環
+% 把環上除了新的邊中權重最大的邊移除，判斷是否為答案
+% \subsection{最大網路流}
+% \lstinputlisting{problem/max_flow_example.cpp}
+
+
+\section{小技巧}
+\subsection{快讀/快寫}
+\lstinputlisting{skill/Fast_IO.cpp}
+% \subsection{progama優化}
+% \lstinputlisting{skill/Progama.cpp}
+\subsection{隨機數}
+\lstinputlisting{skill/Random.cpp}
+% \subsection{Linus指令}
+% \lstinputlisting{skill/Linus_cmd.cpp}
+\subsection{Windows對拍}
+\lstinputlisting{skill/debugScript.cpp}
+
+
+\section{其他}
+\lstinputlisting{other/funny.cpp}
+\lstinputlisting{other/IwantAC.cpp}
+
+\end{document}
