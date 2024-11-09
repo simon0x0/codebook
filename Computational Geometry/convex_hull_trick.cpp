@@ -1,4 +1,5 @@
 struct Convex {
+    #define all(x) x.begin(), x.end()
     int n; 
     vector<Pt> A, V, L, U;
     Convex(const vector<Pt> &_A) : A(_A), n(_A.size()) { // n >= 3
@@ -10,7 +11,7 @@ struct Convex {
         }
     }
     int PtSide(Pt p, Line L) {
-        return dcmp((L.b - L.a)^(p - L.a));
+        return dcmp((L.e - L.s)^(p - L.s));
     }
     int inside(Pt p, const vector<Pt> &h, auto f) {
         auto it = lower_bound(all(h), p, f);
@@ -62,7 +63,7 @@ struct Convex {
     // 4. Find intersection point of a given line
     // intersection is on edge (i, next(i))
     vector<int> intersect(Line L) {
-        int l = tangent(L.a - L.b), r = tangent(L.b - L.a);
+        int l = tangent(L.s - L.e), r = tangent(L.e - L.s);
         if(PtSide(A[l], L) == 0)    return {l};
         if(PtSide(A[r], L) == 0)    return {r};
         if (PtSide(A[l], L) * PtSide(A[r], L) > 0) return {};

@@ -1,18 +1,3 @@
-<<<<<<< HEAD
-struct Pt{
-    double x, y;
-};
-struct Line{
-    double st, ed;
-};
-struct Circle{
-    Pt o; // 圓心
-    double r; // 半徑
-};
-struct poly{
-    int n; // n邊形
-    vector<Pt> pts;
-=======
 typedef long double ld;
 const ld eps = 1e-8;
 int dcmp(ld x) {
@@ -36,8 +21,12 @@ struct Pt {
     return x*a.y - y*a.x;  }
   bool operator<(const Pt &a) const {
     return x < a.x || (x == a.x && y < a.y); }
+  bool operator>(const Pt &a) const {
+    return x > a.x || (x == a.x && y > a.y); }
   bool operator==(const Pt &a) const {
     return dcmp(x-a.x) == 0 && dcmp(y-a.y) == 0;  }
+  friend ld cross(Pt a, Pt b, Pt c){
+     return (c-a)^(c-b);}
 };
 ld norm2(const Pt &a) {
   return a*a; }
@@ -57,5 +46,4 @@ struct Line {
 struct Circle {
   Pt o; ld r;
   Circle(Pt _o=Pt(0, 0), ld _r=0):o(_o), r(_r) {}
->>>>>>> 6d970e3 (Initial commit)
 };
