@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (MiKTeX 24.1) (preloaded format=xelatex 2024.5.20)  14 NOV 2024 02:09
+This is XeTeX, Version 3.141592653-2.6-0.999995 (MiKTeX 24.1) (preloaded format=xelatex 2024.5.20)  15 NOV 2024 00:43
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -854,9 +854,9 @@ LaTeX Font Warning: Font shape `TU/Monaco(0)/m/it' undefined
 LaTeX Font Warning: Font shape `TU/NotoSansTC(0)/m/it' undefined
 (Font)              using `TU/NotoSansTC(0)/m/n' instead on input line 1.
 
-) (Computational Geometry/line_intersect.cpp [1
+[1
 
-])
+]) (Computational Geometry/line_intersect.cpp)
 (Computational Geometry/convex_hull.cpp)
 (Computational Geometry/convex_hull_trick.cpp)
 (Computational Geometry/farthest_pair.cpp)
@@ -865,23 +865,26 @@ LaTeX Font Warning: Font shape `TU/NotoSansTC(0)/m/it' undefined
 (Computational Geometry/PolygonCover.cpp [3])
 (Computational Geometry/angle_sort.cpp)
 (Computational Geometry/three_search.cpp) (DSA/discretization.cpp)
-(DSA/segment_tree.cpp) (DSA/Mo's_algo.cpp) (DSA/CDQ.cpp [4])
+(DSA/segment_tree.cpp) (DSA/Mo's_algo.cpp [4]) (DSA/CDQ.cpp)
 (DSA/persistent_segment_tree.cpp) (dp/01knapsack.cpp) (dp/infinite_knapsack.cpp
-) (dp/finite_knapsack.cpp) (math/factorial.cpp) (math/exgcd.cpp) (math/CRT.cpp)
-(math/representation_change.cpp [5]) (math/O(1)mul.cpp) (math/Miller_Rabin.cpp)
-(math/Pollard_Rho.cpp) (math/FFT.cpp) (math/Josephus.cpp) (math/quick_eular.cpp
+) (dp/finite_knapsack.cpp) (math/factorial.cpp) (math/exgcd.cpp) (math/CRT.cpp
+[5]) (math/representation_change.cpp) (math/O(1)mul.cpp) (math/Miller_Rabin.cpp
+) (math/Pollard_Rho.cpp) (math/FFT.cpp) (math/Josephus.cpp)
+(math/quick_eular.cpp
 Missing character: There is no φ in font [.fonts/ttf/Monaco-Regular]/OT:languag
 e=dflt;!
-) (math/Matrix.cpp [6]) (tree/lca.cpp) (tree/change_root.cpp)
-(tree/tree_hash.cpp) (graph/short_path/dijkstra.cpp)
-(graph/short_path/floyd_warshall.cpp) (graph/Eular_cycle.cpp)
-(graph/Hamiltonian_path.cpp [7]) (graph/BCC.cpp) (graph/SCC.cpp)
-(string/KMP.cpp) (string/Double_Hash.cpp) (string/minRotation.cpp)
-(string/SA.cpp [8]) (string/Manacher.cpp) (string/Zvalue.cpp) (string/Trie.cpp)
-(string/palTree.cpp) (flow/dinic.cpp [9]) (flow/Min-cost_Max-flow.cpp)
-(flow/MinCut.cpp) (flow/Hungarian_Algo.cpp) (flow/KM.cpp [10])
-(skill/Fast_IO.cpp) (skill/Random.cpp) (skill/Linus_cmd.cpp)
-(skill/debugScript.cpp) [11] (codebook_ICPC_24.aux)
+[6]) (math/Matrix.cpp) (tree/lca.cpp) (tree/change_root.cpp)
+(tree/tree_hash.cpp) (tree/Heavy_Link_cut.cpp [7]) (tree/Virtual_Tree.cpp)
+(graph/short_path/dijkstra.cpp) (graph/short_path/floyd_warshall.cpp)
+(graph/Eular_cycle.cpp) (graph/Hamiltonian_path.cpp) (graph/BCC.cpp [8])
+(graph/SCC.cpp) (graph/2-SAT.cpp) (string/KMP.cpp) (string/Double_Hash.cpp)
+(string/minRotation.cpp) (string/SA.cpp [9]) (string/Manacher.cpp)
+(string/Zvalue.cpp) (string/Trie.cpp) (string/palTree.cpp) (flow/dinic.cpp
+[10]) (flow/Min-cost_Max-flow.cpp) (flow/MinCut.cpp) (flow/Hungarian_Algo.cpp)
+(flow/KM.cpp) (skill/Fast_IO.cpp [11]) (skill/Random.cpp) (skill/Linus_cmd.cpp)
+(skill/debugScript.cpp) [12
+
+] (codebook_ICPC_24.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2022/08/05>
@@ -892,12 +895,12 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 21091 strings out of 409617
- 457262 string characters out of 5774216
- 3253191 words of memory out of 5000000
- 42706 multiletter control sequences out of 15000+600000
+ 21166 strings out of 409617
+ 458681 string characters out of 5774216
+ 3289191 words of memory out of 5000000
+ 42772 multiletter control sequences out of 15000+600000
  560134 words of font info for 71 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 84i,13n,93p,427b,1651s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,13n,93p,427b,1680s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on codebook_ICPC_24.pdf (11 pages).
+Output written on codebook_ICPC_24.pdf (12 pages).
